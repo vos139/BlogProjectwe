@@ -8,10 +8,8 @@ django-javascript-settings==1.1.2
 hyperlink==18.0.0
 idna==2.7
 incremental==17.5.0
-misaka==2.1.0
 pycparser==2.18
 PyHamcrest==1.9.0
 pytz==2018.5
 six==1.11.0
 Twisted==18.9.0
-zope.interface==4.6.0
