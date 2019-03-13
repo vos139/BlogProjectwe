@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Required meta tags -->
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <!--<link rel="stylesheet" href="{% static 'css/firstpage.css' %}">-->
+    <link rel="stylesheet" href="/static/styles.css">
+  <!--  <style>
+    body {
+        background-color: MediumTurquoise;
+    }
+
+    .footer {
+    background-color: #f1f1f1;
+    padding: 10px;
+    }
+
+    .topnav a {
+    float: Right;
+    display: block;
+    background-color: LightBlue;
+    color: Black;
+    text-align: center;
+    padding: 20px 16px;
+    text-decoration: none;
+    }
+}
+
+/* Change color on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Style the content */
+.content {
+    background-color: LightBlue;
+    background-image: url("paper.gif");
+    padding: 10px 10px;
+    text-decoration: Blue;
+    text-align: justify;
+
+
+}
+@media screen and (max-width: 600px){
+
+.topnav a.right,
+
+.topnav a {float: none;}
+
+.header a.right,
+
+.header a {float: none;}
+}
+    </style>
+
+
+<style>
+body {
+    background-image: url("/static/img.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+</style>-->
+</head>
+<body>
+<div>
+<div>
+<form align ="Right" method="get" action="http://www.google.com/search">
+  <input type="text" name="q" size="31" maxlength="255" value="" />
+   <input type="submit" value="Google Search" /><br />
+  </form>
+</div>
+<div class="header">
+<svg width="1000" height="50">
+  <text x="10" y="30" font-size="20" fill= "Blue">Welcome to IT Security open Forum
+  <animate attributeName="x" attributetype="text" from="0" to="1000"
+    dur="20s" fill="freeze" repeatCount="indefinite"/>
+  </text>
+
+</svg></div>
+
+<div class="topnav">
+
+    {% if user.is_authenticated %}
+     <a class="nav-item nav-link" href="{% url 'logout' %}">Log out</a>
+    <a class="nav-item nav-link" href="{% url 'view_profile' %}">{{ user.username }}</a>
+    {% endif %}
+    <a class="nav-item nav-link" href = "{% url 'about' %}">About</a>
+  </br>
+</div>
+
+
+  <main role="main" class="content">
+        <div class="row">
+          <div class="col-md-8">
+
+<h1> Hello</h1>
+
+<div class="content">
+
+<h4 class="content"><b> This is a paradise to learn, connect to thousands of IT security professionals around the world. This platform improve your IT security skills. <b></h4>
+    {% if user.is_authenticated == False %}
+  <p class="content"> You can opt any one role out of two. You can be either a learner or a consultant. Learner group is for those who are initial stage of learning in IT security and consultant
+    profile is for industry experts who can guide learners in their learnings.
+</p>
+    {% endif %}
+<p class="content">Learners can  raise questions or issues on learner forum and consultants will be able to answer those queries. Consultants have their own separate forum where they can discuss high level topics.
+</p>
+<p class="content">Please refer to our {% if user.is_authenticated %} <a href="{% url 'usefull_links'%}">Knowledge Base</a> {% else %} knowledge base {% endif %} to access a plethora of documents, links to external websites, published papers and news to help you to stay on top</p>
+
+
+
+    {% if user.is_authenticated == False %}
+      <p class="content"> If you are already a registered member, please <a href="{% url 'Login' %}">Login</a>, else please <a href = "{% url 'register' %}">Register</a> and select the best suited profile
+      </p>
+    {% else %}
+      <p class="content">Click on <a href= "{% url 'blog_home' %}">Forum</a> to enter the exciting world </p>
+
+  {% endif %}
+
+  {% if user.is_authenticated == False %}
+    <p class="content"><a href="{% url 'Login' %}" input = "button">Login</a></p>
+
+  <p class="content"><a href = "{% url 'register' %}" input = "button">Register</a></p>
+    
+{% endif %}
+</div>
+
+</div>
+
+  </div>
+  <div class="footer">
+  </br>
+  <p><b><u>Disclaimer:</u></b> Please be advised you are not supposed to do any illegal tasks which may leads you to jail</p>
+</div>
+</main>
+</div>
+</body>
+</html>

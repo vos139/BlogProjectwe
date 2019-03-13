@@ -1,0 +1,25 @@
+{% extends "firstpage/base.html" %}
+
+{% block content %}
+<div class="container">
+<h2>Sign up</h2>
+<p class="lead">Select below the type of account you want to create</p>
+<p class="lead">If you are new in cyber world, select user type as learner where you can learn and ask questions from industry experts</p>
+<p class="lead">For industry experts, please use consulatnt and help others in the exicting world of cyber</p>
+<p class="article-content"><a href="{% url 'learner_signup' %}"  role="button"><b>I'm a learner</b></a></p>
+</br>
+
+
+<p class="article-content"><a href="{% url 'consultant_signup' %}"  role="button"><b>I'm a consultant</b></a></p>
+</div>
+</br>
+</br>
+<div class="container">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2" href="{% url 'Login' %}">Sign In</a>
+            </small>
+        </div>
+
+
+
+{% endblock content %}

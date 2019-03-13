@@ -1,0 +1,32 @@
+{% extends "firstpage/base.html" %}
+
+
+{% block content %}
+<div class="content">
+    <h1>View Reply againts post</h1>
+
+    {% for comment in post.comments.all %}
+<div class="content">
+          <p><b>Reply Details:</b>{{ comment.text }}</p>
+          <p><b>Replied by:</b>{{ comment.author }}</p>
+          <p class="date">Replied on:{{ comment.published_date }}</p>
+</div>
+</br>
+        {% empty %}
+        <p class="content">No comments here yet :(</p>
+
+    {% endfor %}
+
+
+<div class="content">
+  {% if user.is_authenticated %}
+  <a href="{% url 'learn_add_reply' pk=post.pk %}" >Add Reply</a></br>
+  {% endif %}
+  </div>
+    <div class="content">
+    <a href="{% url 'learn_post_list' %}" >Back to posts</a>
+  </div>
+  </div>
+  </br>
+  </br>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "firstpage/base.html" %}
+{% block title %}
+Knowledge Base
+
+{% endblock %}
+{% block content %}
+<div class="content">
+<h3> Welcome {{ user.username }} <h3>
+  There are many links of other websites below along with topic details to learn more about the cyber world. These links are from youtube, professional sites or papers published by scholers
+
+<div class="content">
+  <ul>Online labs for penetration testing</ul>
+   <li><a href="https://ctf365.com/" target="_blank">CTF365</a></li>
+   <li><a href="https://www.hackthebox.eu/" target="_blank">Hack The Box</a> </li>
+   <li><a href="https://www.root-me.org/" target="_blank">Root Me </a></li>
+   <li><a href="https://www.hackthissite.org/" target="_blank"> HackThisSite </li>
+   <li><a href="https://lab.pentestit.ru/" target="_blank">Pentestit</a> </li>
+  </div>
+<h2> Watch out this space for more links</h2>
+  <a href="{% url 'blog_home' %}" >Back to Forum homepage</a>
+  </div>
+{% endblock %}

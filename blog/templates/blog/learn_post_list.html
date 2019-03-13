@@ -1,0 +1,41 @@
+{% extends "firstpage/base.html" %}
+
+{% block content %}
+<div>
+    <h1>Learner Forum</h1>
+</div>
+<br>
+<br>
+<div align = right>
+{% if user.is_learner %}
+<a href="{% url 'learn_post_new' %}" ><h3>New Post</h3></a>
+<a href="{% url 'blog_home' %}" ><h5>Back to Forum home Page</h5></a>
+{% endif %}
+
+{% if user.is_consultant %}
+<a href="{% url 'blog_home' %}" >Back to consultant home</a>
+{% endif %}
+</div>
+
+
+    {% for post in posts %}
+    <form class='content'>
+        <article class="media content-section">
+          <div class="media-body">
+
+            <h1><a href="{% url 'learn_post_detail' pk=post.pk %}">Title:{{ post.title }}</a></h1>
+            <p class="article-content"><b>Details</b>:{{ post.text }}</p>
+            <div class="post">
+              <p class="article-content"> <b>Published by</b>:{{ post.author }}</p>
+              <small class="article-content"><b>Created Date</b>:{{ post.created_date|date:"F d, Y" }}</small>
+              <small class="article-content"><b>Published Date</b>:{{ post.published_date|date:"F d, Y" }}</small>
+            </div>
+
+
+          </div>
+        </article>
+</form>
+    {% endfor %}
+
+<br>
+{% endblock content %}

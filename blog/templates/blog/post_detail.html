@@ -1,0 +1,43 @@
+{% extends "firstpage/base.html" %}
+
+{% block content %}
+    <div class="content">
+      {% if user.is_consultant %}
+
+        <h1><b>Title:</b>{{ post.title }}</h1>
+        <p><b>Details:</b>{{ post.text|linebreaksbr }}</p>
+        <p><b>Posted by:</b> {{ post.author }}</p>
+
+    {% if post.published_date %}
+        <div class="date">
+        <b>  Date published: </b>{{ post.published_date }}
+        </div>
+    {% endif %}
+  </div>
+</br>
+<div class="content">
+
+  {% if post.author == request.user %}
+      <a href="{% url 'post_edit' pk=post.pk %}" > Edit Post</a>
+  {% endif %}
+</div>
+
+{% if user.is_authenticated%}
+  <div class="content">
+    <a href="{% url 'add_reply' pk=post.pk %}" >Add reply</a>
+  </div>
+{% endif %}
+  <div class="content">
+    <a href="{% url 'view_reply' pk=post.pk %}" >View reply</a>
+  </div>
+  <div class="content">
+    <a href="{% url 'post_list' %}" >Back to posts</a>
+  </div>
+  {% endif %}
+
+
+</br>
+</br>
+</br>
+</br>
+{% endblock %}

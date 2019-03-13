@@ -1,0 +1,41 @@
+{% extends "firstpage/base.html" %}
+
+{% block content %}
+<div>
+    <h1>Consultant Forum</h1>
+</div>
+<br>
+<br>
+{% if user.is_authenticated and user.is_consultant %}
+<div class=content>
+    <a href="{% url 'post_new' %}" >New Post</a>
+    </br>
+    <a href="{% url 'blog_home' %}" >Back to consultant home</a>
+    </div>
+    {% for post in posts %}
+    <form class="content">
+        <article class="media content-section">
+          <div class="media-body">
+            <h1><a href="{% url 'post_detail' pk=post.pk %}"><b>Title:</b> {{ post.title }}</a></h1> <!--{% url 'post_detail' pk=post.pk %}-->
+            <p class="article-content"><b>Details:</b> {{ post.text }}</p>
+            <div class="article-metadata">
+              <p class="mr-2"><b>Published by:</b>{{ post.author }}</p>
+              <small class="text-muted"><b>Created Date:</b>{{ post.created_date|date:"F d, Y" }}</small>
+              <small class="text-muted"><b>Edited date:</b>{{ post.published_date|date:"F d, Y" }}</small>
+            </div>
+
+          </div>
+          </form>
+        </article>
+
+    {% endfor %}
+
+{% endif %}
+
+
+
+</br>
+</br>
+</br>
+</br>
+{% endblock content %}

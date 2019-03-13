@@ -1,0 +1,24 @@
+{% extends "firstpage/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% if user.is_learner %}
+    <h1>Edit post</h1>
+    <div class="content">
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+    </div>
+
+{% endif %}
+
+  </br>
+  </br>
+  </br>
+  </br>
+{% endblock %}
+
+    <div class="content">
+      <a href="{% url 'learn_post_detail' pk=self.pk %}" >Back to posts</a>
+    </div>

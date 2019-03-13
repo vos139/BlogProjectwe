@@ -1,0 +1,18 @@
+
+{% extends "firstpage/base.html" %}
+{% block title %} Blog Home {% endblock %}
+{% block content %}
+<h3> Welcome {{ user.username }} <h3>
+  <p>Click on Enter forum where you can post your issues and discuss with others<p>
+
+{% if user.is_authenticated and user.is_consultant %}
+    <p><a href="{% url 'post_list' %}" >Enter Forum</a></p>
+
+    <a href="{% url 'learn_post_list' %}" >View and reply to learner's queries</a>
+{% elif user.is_authenticated and user.is_learner %}
+    <a href="{% url 'learn_post_list' %}" >View Post</a>
+{% endif %}
+
+<p> Check out other links to read and learn new things. There are multiple links available to you, which can help in learning further about the cyber world<p>
+<a class="nav-item nav-link" href="{% url 'usefull_links'%}">Knowledge Base</a>
+{% endblock %}

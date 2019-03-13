@@ -1,0 +1,34 @@
+{% extends "firstpage/base.html" %}
+{% block content %}
+<form class='content'>
+{% if user.is_authenticated %}
+        <h1>Title:{{ post.title }}</h1>
+        <p>Details:{{ post.text|linebreaksbr }}</p>
+        <p> Posted by: {{ post.author }}</p>
+        <div class="post">
+            {% if post.published_date %}
+                <div class="date">
+                    Date Published:{{ post.published_date }}
+                </div>
+            {% endif %}
+          </div>
+</form>
+<form class='content'>
+    {% if user.is_learner and request.user == post.author %}
+    <p> To edit post, click on edit post button</p>
+    <p> <a href="{% url 'learn_post_edit' pk=post.pk %}" >Edit Post</a></p>
+    </br>
+    {% endif %}
+    {% endif %}
+
+<p> <a href="{% url 'view_learn' pk=post.pk %}" >View Reply</a></p></br>
+
+{% if user.is_authenticated %}
+<p> <a href="{% url 'learn_add_reply' pk=post.pk %}" >Add Reply</a></p></br>
+{% endif %}
+  <p>   <a href="{% url 'learn_post_list' %}" >Back to posts</a></p>
+</form>
+
+  </br>
+  </br>
+{% endblock %}

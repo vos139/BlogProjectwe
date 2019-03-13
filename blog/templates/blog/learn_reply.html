@@ -1,0 +1,21 @@
+{% extends "firstpage/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="content">
+    <h1>Add reply in below text box:</h1>
+    {% if user.is_authenticated %}
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+    </div>
+  {% endif %}
+  </br>
+  </br>
+  <div class="content">
+<a href="{% url 'learn_post_list' %}" >Back to posts</a>
+  </div>
+  </br>
+  </br>
+{% endblock %}

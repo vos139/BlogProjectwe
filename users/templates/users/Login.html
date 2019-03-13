@@ -1,0 +1,29 @@
+{% extends "firstpage/base.html" %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block content %}
+
+<h3>Welcome to the  forum. Please login using your credentials<h3>
+    <div class="content">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Log In</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <button class="btn btn-lg btn-primary btn-block" id="recaptcha-submit">Sign in</button>
+
+        </form>
+
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
+            </small>
+        </div>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Trouble Logging in?<a class="ml-2" href="{% url 'Forgot' %}">Forgot Password</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}

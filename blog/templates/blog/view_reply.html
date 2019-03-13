@@ -1,0 +1,30 @@
+{% extends "firstpage/base.html" %}
+
+
+{% block content %}
+<div class="content">
+    <h1>View Reply for Title {{ post.title }}</h1>
+    {% for comment in post.comments.all %}
+
+        <div class="content">
+            <b>Reply Details:</b>{{ comment.text }}</br>
+           <b>Replied by:</b>{{ comment.author }}
+          <p class="date"> <b> Replied on:</b>{{ comment.published_date }}</p>
+        </div>
+    {% empty %}
+
+          <div class="content">No comments here yet :(</div>
+    {% endfor %}
+  </br>
+  </br>
+
+  {% if user.is_authenticated %}
+    <div class="content"><a href="{% url 'add_reply' pk=post.pk %}" >Add reply</a></div>
+  {% endif %}
+  <div class="content">
+    <a href="{% url 'post_list' %}" >Back to posts</a>
+  </div>
+  </div>
+  </br>
+  </br>
+{% endblock %}

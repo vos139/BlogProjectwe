@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Required meta tags -->
+    <title>{% block title %}Home{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <!--<link rel="stylesheet" href="{% static 'css/firstpage.css' %}">-->
+    <link rel="stylesheet" href="/static/styles.css">
+  <!--  <style>
+    body {
+        background-color: MediumTurquoise;
+    }
+
+    .footer {
+    background-color: #f1f1f1;
+    padding: 10px;
+    }
+
+    .topnav a {
+    float: Right;
+    display: block;
+    background-color: LightBlue;
+    color: Black;
+    text-align: center;
+    padding: 20px 16px;
+    text-decoration: none;
+    }
+}
+
+/* Change color on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Style the content */
+.content {
+    background-color: LightBlue;
+    background-image: url("paper.gif");
+    padding: 10px 10px;
+    text-decoration: Blue;
+    text-align: justify;
+
+
+}
+@media screen and (max-width: 600px){
+
+.topnav a.right,
+
+.topnav a {float: none;}
+
+.header a.right,
+
+.header a {float: none;}
+}
+    </style>
+
+
+<style>
+body {
+    background-image: url("/static/img.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+</style>-->
+</head>
+<body>
+<form align = "Right" method="get" action="http://www.google.com/search">
+  <input type="text" name="q" size="31" maxlength="255" value="" />
+   <input type="submit" value="Google Search" /><br />
+  </form>
+
+
+<div class="topnav">
+    <a class="nav-item nav-link" href="{% url 'firsthome' %}">Home</a>
+    {% if user.is_authenticated %}
+     <a class="nav-item nav-link" href="{% url 'logout' %}">Log out</a>
+    <a class="nav-item nav-link" href="{% url 'view_profile' %}">{{ user.username }}</a>
+    {% endif %}
+    <a class="nav-item nav-link" href = "{% url 'about' %}">About</a>
+</div>
+  <main role="main" class="content">
+        <div class="row">
+          <div class="col-md-8">
+
+          {% block content %} {% endblock %}
+        </div>
+        </div>
+
+      </br>
+      </br>
+      </br>
+
+        </main>
+          </div>
+        <div class="footer">
+            <p><b><u>Disclaimer:</u></b> Please be advised you are not supposed to do any illegal tasks which may leads you to jail</p>
+        </div>
+</body>
+
+</html>
