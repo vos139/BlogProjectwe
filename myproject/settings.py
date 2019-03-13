@@ -23,9 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'j8=qh&f603bhkp57k570&o+hmncbu&_$sh-mq=u1f^$w_%nd24'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+
+
 
 # Application definition
 
@@ -40,8 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'crispy_forms',
-	#'djangosecure',
+	'djangosecure',
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -51,8 +56,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
+CSRF_Cookie_Secure = True
+Session_Cookie_Secure = True
 SECURE_HSTS_SECONDS = 360000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
@@ -146,7 +154,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 	]
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Custom Django auth settings
 
