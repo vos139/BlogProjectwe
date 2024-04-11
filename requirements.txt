@@ -7,7 +7,7 @@ django-crispy-forms==1.7.2
 django-javascript-settings==1.1.2
 django-mssql==1.8
 hyperlink==18.0.0
-idna==2.7
+idna==3.7
 incremental==17.5.0
 misaka==2.1.0
 mysqlclient==1.4.2.post1
