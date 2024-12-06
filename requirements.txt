@@ -2,7 +2,7 @@ attrs==18.2.0
 Automat==0.7.0
 cffi==1.11.5
 constantly==15.1.0
-Django==4.2.16
+Django==4.2.17
 django-crispy-forms==1.7.2
 django-javascript-settings==1.1.2
 django-mssql==1.8
